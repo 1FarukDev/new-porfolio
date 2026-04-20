@@ -2,18 +2,18 @@ import React from "react";
 
 const experiences = [
   {
+    company: "Technique Learning Solutions",
+    role: "Software & AI Engineer",
+    description:
+      "EdTech platform for PLC, Automation & AC Repair training — built AI-powered features and full-stack web applications, including a RAG-powered chatbot with live agent escalation, a redesigned company website, and a token-based referral system.",
+    date: "September 2025 – present - remote",
+  },
+  {
     company: "Insync",
     role: "Software Engineer (Intern)",
     description:
       "Building next-generation web applications and AI developer tools. Currently helping build the AI SDK and focused on developer experience.",
-    date: "January 2025, to present - remote",
-  },
-  {
-    company: "Another Company",
-    role: "Frontend Developer",
-    description:
-      "Worked on modern UI components and optimized performance for large-scale React apps.",
-    date: "July 2024 – December 2024 - onsite",
+    date: "January 2025, to December 2025 - remote",
   },
 ];
 
@@ -25,7 +25,7 @@ function Experience() {
         <div className="w-full md:w-[70%]">
           {experiences.map((exp, index) => (
             <div key={index} className="mb-8">
-              <div className="flex gap-2 items-center">
+              <div className="flex md:flex-row flex-col gap-2 md:items-center w-max">
                 <p className="-pb-1 border-b border-b-foreground text-foreground">
                   {exp.company}
                 </p>

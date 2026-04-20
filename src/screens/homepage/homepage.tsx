@@ -8,7 +8,7 @@ import GithubContributions from "./github";
 const socials = [
   {
     name: "GitHub",
-    url: "https://github.com/yourusername",
+    url: "https://github.com/1farukdev",
     icon: Github,
   },
   {
@@ -23,7 +23,7 @@ const socials = [
   },
   {
     name: "Email",
-    url: "mailto:your@email.com", // replace with your email
+    url: "mailto:your@email.com", 
     icon: Mail,
   },
 ];
@@ -34,9 +34,7 @@ function Homepage() {
       <div className="flex md:flex-row flex-col gap-1 ">
         <div className="w-full md:w-[30%]">about</div>
         <div className="w-full md:w-[70%]">
-          passionate about creating meaningful software and exploring new
-          technologies. I love building products that solve real problems and
-          make people's lives better.
+          Passionate about creating meaningful software and exploring new technologies. I love building products that solve real problems and make people's lives better — from AI-powered web applications to data science solutions that turn raw data into actionable insight.
         </div>
       </div>
 
@@ -61,7 +59,7 @@ function Homepage() {
       <GithubContributions />
       <Experience />
       <Education />
-      <Skills />
+      {/* <Skills /> */}
     </div>
   );
 }

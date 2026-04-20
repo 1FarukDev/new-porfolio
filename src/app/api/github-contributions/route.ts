@@ -28,12 +28,9 @@ export async function GET() {
   });
 
   const result = await response.json();
-
   const weeks =
     result.data?.viewer?.contributionsCollection?.contributionCalendar?.weeks ||
     [];
-
-  // Flatten into [{ date, count }]
   const contributions = weeks.flatMap((week: any) =>
     week.contributionDays.map((day: any) => ({
       date: day.date,
