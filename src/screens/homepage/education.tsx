@@ -5,36 +5,40 @@ const education = [
     school: "Federal University of Agricultural, Abeokuta",
     degree: "B.Sc. Data Science",
     description:
-      "Focused on software engineering, algorithms, and system design. Graduated with honors.",
-    date: "2019 – 2023",
+      "Focused on statistical modelling, machine learning, and data-driven problem solving. Built a strong foundation in Python, data analysis, and applied AI.",
+    date: "2027",
   },
-  // {
-  //   school: "Online Courses",
-  //   degree: "Full-Stack Web Development",
-  //   description:
-  //     "Completed several certifications in modern web technologies including React, Node.js, and cloud computing.",
-  //   date: "2023",
-  // },
+  {
+    school: "Lagos State Polytechnic, Ikorodu",
+    degree: "Computer Science Diploma",
+    description:
+      "Studied programming, algorithms, and software development. Gained practical experience in Java, C++, and web development through projects and internships.",
+    date: "2022",
+  },
 ];
 
 function Education() {
   return (
     <section>
-      <div className="flex md:flex-row flex-col gap-1">
-        <p className="w-full md:w-[30%]">Education</p>
-        <div className="w-full md:w-[70%]">
+      <div className="flex md:flex-row flex-col gap-6 md:gap-12">
+        <p className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">
+          education
+        </p>
+        <div className="w-full md:w-[70%] space-y-6">
           {education.map((edu, index) => (
-            <div key={index} className="mb-8 flex justify-between items-start">
-              <div className=" gap-2 items-center">
-                <p className=" text-foreground">
-                  {edu.school}
+            <div
+              key={index}
+              className="pb-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
+            >
+              <div className="flex justify-between items-start gap-4 mb-2">
+                <p className="text-foreground font-medium">{edu.school}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                  {edu.date}
                 </p>
-                <p>{edu.degree}</p>
               </div>
-              <div className="">
-                
-                <p className="text-xs mt-3">{edu.date}</p>
-              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {edu.degree}
+              </p>
             </div>
           ))}
         </div>

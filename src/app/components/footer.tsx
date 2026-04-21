@@ -22,14 +22,9 @@ function Footer() {
   }, []);
 
   return (
-    <main className="mt-10 mb-4 ">
-      <div className="text-sm text-gray-400 dark:text-gray-500 mt-4 border-t border-gray-900 dark:border-gray-800 pt-4 flex md:flex-row flex-col justify-between items-center gap-2">
-        <p>© {new Date().getFullYear()} Faruk Ajibade. All rights reserved.</p>
-        {/* <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> */}
-        <p>
-          {/* <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> */}
-          {currentTime}
-        </p>
+    <main className="mt-20 mb-4">
+      <div className="text-xs text-gray-500 dark:text-gray-600 flex justify-end items-center gap-2">
+        <p>lagos, {currentTime}</p>
       </div>
     </main>
   );

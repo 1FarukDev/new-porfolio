@@ -2,25 +2,22 @@ import React from "react";
 
 const blogs = [
   {
-    title: "Understanding React Server Components",
-    date: "Feb 2025",
-    readTime: "8 mins read",
-    excerpt:
-      "A deep dive into how React Server Components work and when you should use them.",
+    title: "Building real-time systems with WebSockets",
+    date: "Apr 2024",
+    readTime: "10 mins",
+    excerpt: "Lessons learned building live collaboration features at scale.",
   },
   {
-    title: "Next.js App Router: The Future of Routing",
-    date: "Jan 2025",
-    readTime: "12 mins read",
-    excerpt:
-      "Exploring the new App Router in Next.js and how it simplifies building scalable apps.",
+    title: "Designing systems that scale",
+    date: "Mar 2024",
+    readTime: "14 mins",
+    excerpt: "From monolith to microservices — mistakes we made and what we learned.",
   },
   {
-    title: "Tailwind CSS Best Practices",
-    date: "Dec 2024",
-    readTime: "6 mins read",
-    excerpt:
-      "Learn how to write clean, maintainable, and scalable styles with Tailwind CSS.",
+    title: "Why I switched from TypeScript strict mode",
+    date: "Feb 2024",
+    readTime: "8 mins",
+    excerpt: "Sometimes the strictest rules aren't always the best for productivity.",
   },
 ];
 
@@ -28,18 +25,12 @@ function Blogs() {
   return (
     <section>
       {blogs.map((blog, index) => (
-        <div key={index} className="flex flex-col gap-1 md:flex-row mt-10">
-          <div className="w-full md:w-[30%]">
-            <p className="text-foreground">{blog.date}</p>
-            <p className="text-gray-500 text-sm">{blog.readTime}</p>
-          </div>
-
-          <div className="w-full md:w-[70%]">
-            <h1 className="text-base border-b w-max font-normal text-foreground">
-              {blog.title}
-            </h1>
-            <p className="text-gray-500">{blog.excerpt}</p>
-          </div>
+        <div key={index} className="py-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+          <h2 className="text-lg font-medium text-foreground mb-2 hover:text-gray-600 dark:hover:text-gray-400 transition-colors cursor-pointer">
+            {blog.title}
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{blog.date} — {blog.readTime}</p>
+          <p className="text-base text-gray-700 dark:text-gray-300">{blog.excerpt}</p>
         </div>
       ))}
     </section>

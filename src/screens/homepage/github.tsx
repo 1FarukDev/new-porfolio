@@ -10,10 +10,23 @@ const COLORS = {
   dark: ["#262626", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 const CACHE_KEY = "github_contributions";
-const CACHE_TTL = 1000 * 60 * 60; // 1 hour in ms
+const CACHE_TTL = 1000 * 60 * 60;
 
 function getLevel(count: number) {
   if (count === 0) return 0;
@@ -27,12 +40,12 @@ function getDateRange() {
   const today = new Date();
 
   const start = new Date(today);
-  start.setMonth(start.getMonth() - 5);
+  start.setMonth(start.getMonth() - 6);
   start.setDate(1);
   start.setDate(start.getDate() - start.getDay());
 
   const end = new Date(today);
-  end.setMonth(end.getMonth() + 3);
+  end.setMonth(end.getMonth() + 1);
   end.setDate(new Date(end.getFullYear(), end.getMonth() + 1, 0).getDate());
 
   return { start, end };
@@ -49,7 +62,7 @@ function getCached(): Day[] | null {
     const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
     const { data, cachedAt } = JSON.parse(raw);
-    if (Date.now() - cachedAt > CACHE_TTL) return null; // expired
+    if (Date.now() - cachedAt > CACHE_TTL) return null;
     return data;
   } catch {
     return null;
@@ -58,14 +71,21 @@ function getCached(): Day[] | null {
 
 function setCache(data: Day[]) {
   try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ data, cachedAt: Date.now() }));
+    localStorage.setItem(
+      CACHE_KEY,
+      JSON.stringify({ data, cachedAt: Date.now() }),
+    );
   } catch {}
 }
 
 export default function GithubContributions() {
   const [weeks, setWeeks] = useState<Day[][]>([]);
   const [total, setTotal] = useState(0);
-  const [tooltip, setTooltip] = useState<{ text: string; x: number; y: number } | null>(null);
+  const [tooltip, setTooltip] = useState<{
+    text: string;
+    x: number;
+    y: number;
+  } | null>(null);
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -107,93 +127,125 @@ export default function GithubContributions() {
 
   const palette = isDark ? COLORS.dark : COLORS.light;
   const today = new Date().toISOString().split("T")[0];
-  let lastMonth = -1;
 
   return (
     <section>
-      <div className="flex flex-col md:flex-row rounded-xl hover:bg-muted transition-colors">
-        <div className="w-full md:w-[30%]">
-          <h1>GitHub Contributions</h1>
+      <div className="flex md:flex-row flex-col gap-6 md:gap-12">
+        <div className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">
+          recent github contributions
         </div>
-
         <div className="w-full md:w-[70%]">
-          <div className="overflow-x-auto relative" onMouseLeave={() => setTooltip(null)}>
-            <div className="flex gap-[3px] min-w-max">
-              <div className="flex flex-col gap-[3px] mt-[18px] mr-1">
-                {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
-                  <div key={i} className="h-3 flex items-center text-[10px] text-muted-foreground">
-                    {d}
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col gap-[3px]">
-                <div className="flex gap-[3px] h-4">
-                  {weeks.map((week, wi) => {
-                    const month = new Date(week[0].date + "T12:00:00").getMonth();
-                    const show = month !== lastMonth;
-                    if (show) lastMonth = month;
-                    return (
-                      <div key={wi} className="w-3 text-[10px] text-muted-foreground overflow-visible whitespace-nowrap">
-                        {show ? MONTHS[month] : ""}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="flex gap-[3px]">
-                  {weeks.map((week, wi) => (
-                    <div key={wi} className="flex flex-col gap-[3px]">
-                      {week.map((day) => {
-                        const isFuture = day.date > today;
-                        const dt = new Date(day.date + "T12:00:00");
-                        const label = isFuture
-                          ? dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-                          : `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`;
-                        return (
-                          <div
-                            key={day.date}
-                            className="w-3 h-3 rounded-sm cursor-pointer"
-                            style={{
-                              background: isFuture
-                                ? isDark ? "#262626" : "#262626"
-                                : palette[getLevel(day.count)],
-                              opacity: isFuture ? 0.4 : 1,
-                            }}
-                            onMouseEnter={(e) => {
-                              const rect = (e.target as HTMLElement).getBoundingClientRect();
-                              const parent = (e.target as HTMLElement).closest(".overflow-x-auto")!.getBoundingClientRect();
-                              setTooltip({ text: label, x: rect.left - parent.left + 6, y: rect.top - parent.top - 8 });
-                            }}
-                          />
-                        );
-                      })}
+          <div className="w-full text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            <div
+              className="overflow-x-auto relative"
+              onMouseLeave={() => setTooltip(null)}
+            >
+              <div className="flex gap-[3px] min-w-max">
+                <div className="flex flex-col gap-[3px] mt-[24px] mr-1">
+                  {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
+                    <div
+                      key={i}
+                      className="h-3 flex items-center text-[10px] text-muted-foreground"
+                    >
+                      {d}
                     </div>
                   ))}
                 </div>
+
+                <div className="flex flex-col gap-[3px]">
+                  <div className="flex gap-[3px] h-5 mb-1">
+                    {weeks.map((week, wi) => {
+                      const month = new Date(
+                        week[0].date + "T12:00:00",
+                      ).getMonth();
+                      const prevMonth =
+                        wi > 0
+                          ? new Date(
+                              weeks[wi - 1][0].date + "T12:00:00",
+                            ).getMonth()
+                          : -1;
+                      const show = month !== prevMonth;
+                      return (
+                        <div
+                          key={wi}
+                          className="w-3 text-[10px] text-muted-foreground overflow-visible whitespace-nowrap"
+                        >
+                          {show ? MONTHS[month] : ""}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex gap-[3px]">
+                    {weeks.map((week, wi) => (
+                      <div key={wi} className="flex flex-col gap-[3px]">
+                        {week.map((day) => {
+                          const isFuture = day.date > today;
+                          const dt = new Date(day.date + "T12:00:00");
+                          const label = isFuture
+                            ? dt.toLocaleDateString("en-GB", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                              })
+                            : `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`;
+                          return (
+                            <div
+                              key={day.date}
+                              className="w-3 h-3 rounded-sm"
+                              style={{
+                                background: isFuture
+                                  ? "#262626"
+                                  : palette[getLevel(day.count)],
+                                opacity: isFuture ? 0.4 : 1,
+                              }}
+                              onMouseEnter={(e) => {
+                                const rect = (
+                                  e.target as HTMLElement
+                                ).getBoundingClientRect();
+                                const parent = (e.target as HTMLElement)
+                                  .closest(".overflow-x-auto")!
+                                  .getBoundingClientRect();
+                                setTooltip({
+                                  text: label,
+                                  x: rect.left - parent.left + 6,
+                                  y: rect.top - parent.top - 8,
+                                });
+                              }}
+                            />
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+
+              {tooltip && (
+                <div
+                  className="absolute z-10 pointer-events-none bg-[#262626] border border-border rounded-md px-2 py-1 text-xs text-popover-foreground shadow-sm whitespace-nowrap -translate-x-1/2 -translate-y-full"
+                  style={{ left: tooltip.x, top: tooltip.y }}
+                >
+                  {tooltip.text}
+                </div>
+              )}
             </div>
 
-            {tooltip && (
-              <div
-                className="absolute z-10 pointer-events-none bg-[#262626] border border-border rounded-md px-2 py-1 text-xs text-popover-foreground shadow-sm whitespace-nowrap -translate-x-1/2 -translate-y-full"
-                style={{ left: tooltip.x, top: tooltip.y }}
-              >
-                {tooltip.text}
+            <div className="flex items-center justify-between mb-2 mt-3">
+              <span className="text-sm text-muted-foreground">
+                {total.toLocaleString()} contributions in this period
+              </span>
+              <div className="flex items-center gap-1">
+                <span className="text-xs text-muted-foreground">Less</span>
+                {palette.map((c, i) => (
+                  <div
+                    key={i}
+                    className="w-3 h-3 rounded-sm"
+                    style={{ background: c }}
+                  />
+                ))}
+                <span className="text-xs text-muted-foreground">More</span>
               </div>
-            )}
-          </div>
-
-          <div className="flex items-center justify-between mb-2 mt-3">
-            <span className="text-sm text-muted-foreground">
-              {total.toLocaleString()} contributions in this period
-            </span>
-            <div className="flex items-center gap-1">
-              <span className="text-xs text-muted-foreground">Less</span>
-              {palette.map((c, i) => (
-                <div key={i} className="w-3 h-3 rounded-sm" style={{ background: c }} />
-              ))}
-              <span className="text-xs text-muted-foreground">More</span>
             </div>
           </div>
         </div>

@@ -5,36 +5,32 @@ const experiences = [
     company: "Technique Learning Solutions",
     role: "Software & AI Engineer",
     description:
-      "EdTech platform for PLC, Automation & AC Repair training — built AI-powered features and full-stack web applications, including a RAG-powered chatbot with live agent escalation, a redesigned company website, and a token-based referral system.",
-    date: "September 2025 – present - remote",
+      "Built AI-powered chatbot with live agent escalation for EdTech platform. Designed and shipped full redesign of company website. Implemented token-based referral system for user growth.",
+    date: "Sep 2025 – present",
   },
   {
     company: "Insync",
-    role: "Software Engineer (Intern)",
+    role: "Software Engineer",
     description:
-      "Building next-generation web applications and AI developer tools. Currently helping build the AI SDK and focused on developer experience.",
-    date: "January 2025, to December 2025 - remote",
+      "Working on AI SDK and developer tools. Focused on improving dx and enabling developers to build next-gen applications.",
+    date: "Jan 2025 – Dec 2025",
   },
 ];
 
 function Experience() {
   return (
     <section>
-      <div className="flex md:flex-row flex-col gap-1">
-        <p className="w-full md:w-[30%]">Experience</p>
-        <div className="w-full md:w-[70%]">
+      <div className="flex md:flex-row flex-col gap-6 md:gap-12">
+        <p className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">experience</p>
+        <div className="w-full md:w-[70%] space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="mb-8">
-              <div className="flex md:flex-row flex-col gap-2 md:items-center w-max">
-                <p className="-pb-1 border-b border-b-foreground text-foreground">
-                  {exp.company}
-                </p>
-                <p>{exp.role}</p>
+            <div key={index} className="pb-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+              <div className="flex md:flex-row flex-col gap-2 md:items-start mb-2">
+                <p className="text-foreground font-medium">{exp.company}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 md:ml-auto">{exp.date}</p>
               </div>
-              <div className="mt-3">
-                <p>{exp.description}</p>
-                <p className="text-xs mt-3">{exp.date}</p>
-              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{exp.role}</p>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{exp.description}</p>
             </div>
           ))}
         </div>

@@ -1,4 +1,10 @@
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Demo | Faruk Ajibade",
+  description: "Coming soon - interactive demos of my projects and work.",
+};
 
 function Page() {
   return (

@@ -4,22 +4,28 @@ import { ExternalLink, Github } from "lucide-react"; // link icons
 
 const projects = [
   {
-    title: "AI SDK",
-    date: "Jan 2025 – Present",
-    stack: "Next.js, TypeScript, Node.js",
-    description:
-      "Building an AI SDK focused on improving developer experience and enabling next-generation web applications.",
-    github: "https://github.com/example/ai-sdk",
-    live: "https://ai-sdk-demo.com",
+    title: "Insync AI SDK",
+    date: "2025",
+    stack: "TypeScript, Node.js, Next.js",
+    description: "SDKs and APIs for building AI-powered applications. focus on dx and making it simple for developers to integrate ai features.",
+    github: "https://github.com/1FarukDev",
+    live: "https://insync.dev",
   },
   {
-    title: "Portfolio Website",
-    date: "Dec 2024",
-    stack: "React, Tailwind CSS",
-    description:
-      "Designed and built a personal portfolio to showcase projects, skills, and writing.",
-    github: "https://github.com/example/portfolio",
-    live: "https://example.com",
+    title: "EdTech Platform",
+    date: "2025",
+    stack: "React, Node.js, PostgreSQL",
+    description: "Full-stack platform for PLC and automation training. built RAG chatbot with live support escalation and token-based referral system.",
+    github: "https://github.com/1FarukDev",
+    live: "https://technique-learning.com",
+  },
+  {
+    title: "Portfolio Site",
+    date: "2024",
+    stack: "Next.js, Tailwind CSS, TypeScript",
+    description: "Minimal portfolio showcasing work and writing. built to be fast, simple, and easy to maintain.",
+    github: "https://github.com/1FarukDev/portfolio-v2",
+    live: "https://farukajibade.com",
   },
 ];
 
@@ -29,44 +35,38 @@ function Projects() {
       {projects.map((project, index) => (
         <div
           key={index}
-          className="flex flex-col md:flex-row mt-10 rounded-xl hover:bg-muted transition-colors"
+          className="py-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
         >
-          {/* Left column (Name + Stack) */}
-          <div className="w-full md:w-[30%]">
-            <h1 className="text-base border-b w-max font-normal text-foreground flex items-center gap-2">
-              {project.title}
-              <div className="flex items-center gap-2">
-                {/* GitHub link */}
-                {project.github && (
-                  <Link
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-foreground transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                  </Link>
-                )}
-                {/* Live link */}
-                {project.live && (
-                  <Link
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </Link>
-                )}
-              </div>
-            </h1>
-            <p className="text-gray-500 text-sm">{project.stack}</p>
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg font-medium text-foreground">{project.title}</h2>
+              {/* GitHub link */}
+              {project.github && (
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 dark:text-gray-400 hover:text-foreground dark:hover:text-gray-200 transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                </Link>
+              )}
+              {/* Live link */}
+              {project.live && (
+                <Link
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 dark:text-gray-400 hover:text-foreground dark:hover:text-gray-200 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              )}
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">{project.date}</p>
           </div>
-
-          {/* Right column (Description) */}
-          <div className="w-full md:w-[70%]">
-            <p className="text-gray-500">{project.description}</p>
-          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{project.stack}</p>
+          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{project.description}</p>
         </div>
       ))}
     </section>
