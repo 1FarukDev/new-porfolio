@@ -29,7 +29,7 @@ function Experience() {
           {experiences.map((exp, index) => (
             <div key={index} className="pb-6 border-gray-200 dark:border-gray-800 ">
               <div className="flex md:flex-row flex-col gap-2 md:items-start mb-2">
-                <Link href={exp.link} target="_blank" className="text-[var(--text-primary)] border-b font-medium hover:decoration-transparent!" >{exp.company}</Link>
+                <Link href={exp.link} target="_blank" className="text-[var(--text-primary)] border-b w-max font-medium hover:decoration-transparent!" >{exp.company}</Link>
                 <p className="text-xs text-[var(--text-secondary)] md:ml-auto">{exp.date}</p>
               </div>
               <p className="text-sm text-[var(--text-secondary)] mb-2">{exp.role}</p>
