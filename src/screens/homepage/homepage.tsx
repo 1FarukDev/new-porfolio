@@ -23,7 +23,7 @@ const socials = [
   },
   {
     name: "Email",
-    url: "mailto:farukajibade@gmail.com", 
+    url: "mailto:hi@farukajibade.com", 
     icon: Mail,
   },
 ];
@@ -32,14 +32,14 @@ function Homepage() {
   return (
     <div className="mt-10 flex flex-col gap-12 md:gap-16">
       <div className="flex md:flex-row flex-col gap-6 md:gap-12">
-        <div className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">about</div>
-        <div className="w-full md:w-[70%] text-base leading-relaxed text-gray-700 dark:text-gray-300">
+        <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">About</div>
+        <div className="w-full md:w-[70%] text-base leading-relaxed text-[var(--text-secondary)]">
           i build web applications and ai products. passionate about solving real problems and shipping fast. currently working on developer tools and scaling systems that just work.
         </div>
       </div>
 
       <div className="flex md:flex-row flex-col gap-6 md:gap-12">
-        <div className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">socials</div>
+        <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">Socials</div>
         <div className="flex gap-6 w-full md:w-[70%]">
           {socials.map((social, index) => (
             <a
@@ -47,7 +47,7 @@ function Homepage() {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-foreground dark:hover:text-gray-200 transition-colors"
+              className="flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               <social.icon className="w-4 h-4" />
               <span>{social.name}</span>

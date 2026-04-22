@@ -19,13 +19,13 @@ function NavbarContent() {
     return (
       <div className="text-sm border-b border-gray-900 dark:border-gray-800 pb-4">
         <p className="font-bold mb-4">farukajibade</p>
-        <div className="flex justify-between items-center mt-3 text-gray-400 dark:text-gray-500">
+        <div className="flex justify-between items-center mt-3 text-[var(--text-secondary)]">
           <div className="flex gap-5">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-foreground duration-100 ease-in-out"
+                className="transition-colors hover:text-[var(--text-primary)] duration-100 ease-in-out"
               >
                 {link.label}
               </a>
@@ -52,10 +52,10 @@ function NavbarContent() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors no-underline ${
+                className={`text-sm transition-colors no-underline hover:no-underline! ${
                   isActive
-                    ? "text-foreground font-medium"
-                    : "hover:text-foreground duration-100 ease-in-out"
+                    ? "text-[var(--text-primary)] font-medium border-[var(--text-primary)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] duration-100 ease-in-out"
                 }`}
               >
                 {link.label}
@@ -66,7 +66,7 @@ function NavbarContent() {
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+            className="p-1 rounded transition-colors"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}

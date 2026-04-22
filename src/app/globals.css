@@ -3,11 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #0d0d0d;
+  --text-primary: #000000;
+  --text-secondary: #71717a;
 }
 
 .dark {
   --background: #0e0f14;
-  --foreground: #ededed;
+  --foreground: #71717a;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
 }
 
 @theme inline {

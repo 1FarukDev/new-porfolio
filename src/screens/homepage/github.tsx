@@ -11,18 +11,8 @@ const COLORS = {
 };
 
 const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
 const CACHE_KEY = "github_contributions";
@@ -131,21 +121,21 @@ export default function GithubContributions() {
   return (
     <section>
       <div className="flex md:flex-row flex-col gap-6 md:gap-12">
-        <div className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">
+        <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">
           recent github contributions
         </div>
         <div className="w-full md:w-[70%]">
-          <div className="w-full text-base leading-relaxed text-gray-700 dark:text-gray-300">
+          <div className="w-full text-base leading-relaxed text-[var(--text-primary)]">
             <div
               className="overflow-x-auto relative"
               onMouseLeave={() => setTooltip(null)}
             >
               <div className="flex gap-[3px] min-w-max">
-                <div className="flex flex-col gap-[3px] mt-[24px] mr-1">
+                <div className="flex flex-col gap-[3px] mt-[27px] mr-1">
                   {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
                     <div
                       key={i}
-                      className="h-3 flex items-center text-[10px] text-muted-foreground"
+                      className="h-3 flex items-center text-[15px] text-[var(--text-secondary)]"
                     >
                       {d}
                     </div>
@@ -155,20 +145,18 @@ export default function GithubContributions() {
                 <div className="flex flex-col gap-[3px]">
                   <div className="flex gap-[3px] h-5 mb-1">
                     {weeks.map((week, wi) => {
-                      const month = new Date(
-                        week[0].date + "T12:00:00",
-                      ).getMonth();
-                      const prevMonth =
-                        wi > 0
-                          ? new Date(
-                              weeks[wi - 1][0].date + "T12:00:00",
-                            ).getMonth()
-                          : -1;
-                      const show = month !== prevMonth;
+                      const firstDayOfMonth = week.findIndex(
+                        (d) => new Date(d.date + "T12:00:00").getDate() === 1
+                      );
+                      const show = firstDayOfMonth !== -1;
+                      const month = show
+                        ? new Date(week[firstDayOfMonth].date + "T12:00:00").getMonth()
+                        : -1;
+
                       return (
                         <div
                           key={wi}
-                          className="w-3 text-[10px] text-muted-foreground overflow-visible whitespace-nowrap"
+                          className="w-3 text-[15px] text-[var(--text-secondary)] overflow-visible whitespace-nowrap"
                         >
                           {show ? MONTHS[month] : ""}
                         </div>
@@ -232,11 +220,11 @@ export default function GithubContributions() {
             </div>
 
             <div className="flex items-center justify-between mb-2 mt-3">
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-[var(--text-secondary)]">
                 {total.toLocaleString()} contributions in this period
               </span>
               <div className="flex items-center gap-1">
-                <span className="text-xs text-muted-foreground">Less</span>
+                <span className="text-xs text-[var(--text-secondary)]">Less</span>
                 {palette.map((c, i) => (
                   <div
                     key={i}
@@ -244,7 +232,7 @@ export default function GithubContributions() {
                     style={{ background: c }}
                   />
                 ))}
-                <span className="text-xs text-muted-foreground">More</span>
+                <span className="text-xs text-[var(--text-secondary)]">More</span>
               </div>
             </div>
           </div>

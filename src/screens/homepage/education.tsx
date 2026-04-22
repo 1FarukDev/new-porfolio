@@ -21,7 +21,7 @@ function Education() {
   return (
     <section>
       <div className="flex md:flex-row flex-col gap-6 md:gap-12">
-        <p className="w-full md:w-[30%] text-sm text-gray-500 dark:text-gray-400 font-medium">
+        <p className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">
           education
         </p>
         <div className="w-full md:w-[70%] space-y-6">
@@ -31,12 +31,12 @@ function Education() {
               className="pb-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
             >
               <div className="flex justify-between items-start gap-4 mb-2">
-                <p className="text-foreground font-medium">{edu.school}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                <p className="text-[var(--text-primary)] font-medium">{edu.school}</p>
+                <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">
                   {edu.date}
                 </p>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-[var(--text-secondary)]">
                 {edu.degree}
               </p>
             </div>

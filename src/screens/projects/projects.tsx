@@ -39,14 +39,14 @@ function Projects() {
         >
           <div className="flex items-start justify-between gap-4 mb-3">
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-medium text-foreground">{project.title}</h2>
+              <h2 className="text-lg font-medium text-[var(--text-primary)]">{project.title}</h2>
               {/* GitHub link */}
               {project.github && (
                 <Link
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-gray-400 hover:text-foreground dark:hover:text-gray-200 transition-colors"
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   <Github className="w-4 h-4" />
                 </Link>
@@ -57,16 +57,16 @@ function Projects() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-gray-400 hover:text-foreground dark:hover:text-gray-200 transition-colors"
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
                 </Link>
               )}
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">{project.date}</p>
+            <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">{project.date}</p>
           </div>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{project.stack}</p>
-          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{project.description}</p>
+          <p className="text-xs text-[var(--text-secondary)] mb-2">{project.stack}</p>
+          <p className="text-base text-[var(--text-primary)] leading-relaxed">{project.description}</p>
         </div>
       ))}
     </section>

@@ -26,11 +26,11 @@ function Blogs() {
     <section>
       {blogs.map((blog, index) => (
         <div key={index} className="py-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
-          <h2 className="text-lg font-medium text-foreground mb-2 hover:text-gray-600 dark:hover:text-gray-400 transition-colors cursor-pointer">
+          <h2 className="text-lg font-medium text-[var(--text-primary)] mb-2 hover:text-[var(--text-secondary)] transition-colors cursor-pointer">
             {blog.title}
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{blog.date} — {blog.readTime}</p>
-          <p className="text-base text-gray-700 dark:text-gray-300">{blog.excerpt}</p>
+          <p className="text-sm text-[var(--text-secondary)] mb-3">{blog.date} — {blog.readTime}</p>
+          <p className="text-base text-[var(--text-primary)]">{blog.excerpt}</p>
         </div>
       ))}
     </section>
