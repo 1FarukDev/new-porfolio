@@ -235,7 +235,7 @@ export default function GithubContributions() {
                 <span className="text-xs text-[var(--text-secondary)]">More</span>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </section>
