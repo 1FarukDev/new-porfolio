@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Welcome to my portfolio. I build web applications and AI products. Explore my projects, experience, and contributions.",
 };
 
-const GITHUB_TOKEN = "ghp_XGgiBRhevJVuHG7cM0vpZORKW";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 export default function Home() {
   return (
