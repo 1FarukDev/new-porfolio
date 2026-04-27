@@ -4,28 +4,30 @@ import { ExternalLink, Github } from "lucide-react"; // link icons
 
 const projects = [
   {
-    title: "Insync AI SDK",
-    date: "2025",
-    stack: "TypeScript, Node.js, Next.js",
-    description: "SDKs and APIs for building AI-powered applications. focus on dx and making it simple for developers to integrate ai features.",
-    github: "https://github.com/1FarukDev",
-    live: "https://insync.dev",
+    title: "Vaultless",
+    date: "2026",
+    stack: "TypeScript, Next.js, Node.js, NextAuth, Octokit",
+    description:
+      "A developer tool that scans GitHub repositories for exposed secrets and automatically removes them. Ships as a web app and a CLI — connect with GitHub, scan repos, review findings, and open a PR with automatic cleanups in one click.",
+    github: "https://github.com/1FarukDev/Vaultless",
+    live: "https://vaultless.farukajibade.com",
+    npm: "https://npmjs.com/package/vaultless",
   },
   {
-    title: "EdTech Platform",
-    date: "2025",
-    stack: "React, Node.js, PostgreSQL",
-    description: "Full-stack platform for PLC and automation training. built RAG chatbot with live support escalation and token-based referral system.",
-    github: "https://github.com/1FarukDev",
-    live: "https://technique-learning.com",
+    title: "J.H Textiles",
+    date: "2026",
+    stack: "TypeScript, Next.js, Tailwind CSS",
+    description:
+      "A Nigerian textile print design studio specializing in exclusive surface patterns. Merges bold digital aesthetics with traditional art for fashion, interiors, and lifestyle applications.",
+    live: "https://www.jesudarahinmikaiye.com",
   },
   {
-    title: "Portfolio Site",
-    date: "2024",
-    stack: "Next.js, Tailwind CSS, TypeScript",
-    description: "Minimal portfolio showcasing work and writing. built to be fast, simple, and easy to maintain.",
-    github: "https://github.com/1FarukDev/portfolio-v2",
-    live: "https://farukajibade.com",
+    title: "Afinju",
+    date: "2026",
+    stack: "TypeScript, Next.js, Tailwind CSS",
+    description:
+      "An online marketplace for buying and selling authentic African art. Connecting African artists with collectors and art lovers worldwide.",
+    live: "https://afinju.com",
   },
 ];
 
@@ -39,7 +41,9 @@ function Projects() {
         >
           <div className="flex items-start justify-between gap-4 mb-3">
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-medium text-[var(--text-primary)]">{project.title}</h2>
+              <h2 className="text-lg font-medium text-[var(--text-primary)]">
+                {project.title}
+              </h2>
               {/* GitHub link */}
               {project.github && (
                 <Link
@@ -63,10 +67,16 @@ function Projects() {
                 </Link>
               )}
             </div>
-            <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">{project.date}</p>
+            <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">
+              {project.date}
+            </p>
           </div>
-          <p className="text-xs text-[var(--text-secondary)] mb-2">{project.stack}</p>
-          <p className="text-base text-[var(--text-primary)] leading-relaxed">{project.description}</p>
+          <p className="text-xs text-[var(--text-secondary)] mb-2">
+            {project.stack}
+          </p>
+          <p className="text-base text-[var(--text-primary)] leading-relaxed">
+            {project.description}
+          </p>
         </div>
       ))}
     </section>
