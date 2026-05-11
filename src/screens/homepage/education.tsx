@@ -2,7 +2,7 @@ import React from "react";
 
 const education = [
   {
-    school: "Federal University of Agricultural, Abeokuta",
+    school: "Federal University of Agriculture, Abeokuta",
     degree: "B.Sc. Data Science",
     description:
       "Focused on statistical modelling, machine learning, and data-driven problem solving. Built a strong foundation in Python, data analysis, and applied AI.",
