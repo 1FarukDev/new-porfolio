@@ -23,7 +23,14 @@ function Footer() {
 
   return (
     <main className="mt-20 mb-4">
-      <div className="text-xs font-mono text-[var(--text-secondary)] flex justify-end items-center gap-2">
+      <div className="text-xs font-mono text-[var(--text-secondary)] flex justify-between items-center gap-4">
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-[var(--contrib-3)]"
+            aria-hidden="true"
+          />
+          available for work
+        </span>
         <p>lagos, {currentTime}</p>
       </div>
     </main>
