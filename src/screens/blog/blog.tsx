@@ -25,11 +25,11 @@ function Blogs() {
   return (
     <section>
       {blogs.map((blog, index) => (
-        <div key={index} className="py-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0">
+        <div key={index} className="py-8 border-b border-[var(--border)] last:border-b-0">
           <h2 className="text-lg font-medium text-[var(--text-primary)] mb-2 hover:text-[var(--text-secondary)] transition-colors cursor-pointer">
             {blog.title}
           </h2>
-          <p className="text-sm text-[var(--text-secondary)] mb-3">{blog.date} — {blog.readTime}</p>
+          <p className="text-sm font-mono text-[var(--text-secondary)] mb-3">{blog.date} — {blog.readTime}</p>
           <p className="text-base text-[var(--text-primary)]">{blog.excerpt}</p>
         </div>
       ))}

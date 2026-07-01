@@ -1,33 +1,48 @@
 import React from "react";
-import Link from "next/link"; // remove if not using Next.js
-import { ExternalLink, Github } from "lucide-react"; // link icons
+import Link from "next/link";
+import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
     title: "Vaultless",
     date: "2026",
-    stack: "TypeScript, Next.js, Node.js, NextAuth, Octokit",
+    stack: "TypeScript, Next.js, Tailwind CSS, Shadcn UI, Octokit",
     description:
-      "A developer tool that scans GitHub repositories for exposed secrets and automatically removes them. Ships as a web app and a CLI — connect with GitHub, scan repos, review findings, and open a PR with automatic cleanups in one click.",
+      "Developer security tool that connects to GitHub repos, detects exposed secrets in .env, YAML, JSON, and TOML files, and commits cleaned files back. Ships as a web app with GitHub OAuth and a CLI on npm — stateless architecture with no data storage for a privacy-first workflow.",
     github: "https://github.com/1FarukDev/Vaultless",
     live: "https://vaultless.farukajibade.com",
-    npm: "https://npmjs.com/package/vaultless",
-  },
-  {
-    title: "J.H Textiles",
-    date: "2026",
-    stack: "TypeScript, Next.js, Tailwind CSS",
-    description:
-      "A Nigerian textile print design studio specializing in exclusive surface patterns. Merges bold digital aesthetics with traditional art for fashion, interiors, and lifestyle applications.",
-    live: "https://www.jesudarahinmikaiye.com",
   },
   {
     title: "Afinju",
-    date: "2026",
-    stack: "TypeScript, Next.js, Tailwind CSS",
+    date: "2025",
+    stack: "TypeScript, Next.js, Tailwind CSS, Shadcn",
     description:
-      "An online marketplace for buying and selling authentic African art. Connecting African artists with collectors and art lovers worldwide.",
+      "Multi-sided marketplace connecting African artists with global collectors. Built collector, artist CMS, and admin dashboards with Next.js SSR, dynamic routing, and API integrations — improving page load times and SEO visibility by ~30%.",
     live: "https://afinju.com",
+  },
+  {
+    title: "J.H Textiles",
+    date: "2025",
+    stack: "TypeScript, Next.js, Tailwind CSS, Supabase",
+    description:
+      "Full-stack e-commerce platform for a Nigerian surface pattern design studio. Supabase powers auth, file storage for print assets, and real-time product data. Includes collection filtering, consultation booking, and SSR for global SEO.",
+    live: "https://www.jesudarahinmikaiye.com",
+  },
+  {
+    title: "RAG Chatbot",
+    date: "2025",
+    stack: "Python, Streamlit, LangChain, OpenAI Embeddings",
+    description:
+      "Retrieval-augmented generation chatbot with a Streamlit interface for conversational document querying. Full pipeline from document ingestion and vector search to LLM-powered, context-aware responses.",
+    github: "https://github.com/1FarukDev/Chatbot-RAG-using-streamlit",
+  },
+  {
+    title: "Telegram Bot",
+    date: "2025",
+    stack: "Python, Telegram Bot API",
+    description:
+      "Automated Telegram bot for real-time user interactions. Handles message routing, command processing, and scalable concurrent request handling with a Python backend.",
+    github: "https://github.com/1FarukDev/Telegram-bot",
   },
 ];
 
@@ -37,14 +52,13 @@ function Projects() {
       {projects.map((project, index) => (
         <div
           key={index}
-          className="py-8 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
+          className="py-8 border-b border-[var(--border)] last:border-b-0"
         >
           <div className="flex items-start justify-between gap-4 mb-3">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-medium text-[var(--text-primary)]">
                 {project.title}
               </h2>
-              {/* GitHub link */}
               {project.github && (
                 <Link
                   href={project.github}
@@ -55,7 +69,6 @@ function Projects() {
                   <Github className="w-4 h-4" />
                 </Link>
               )}
-              {/* Live link */}
               {project.live && (
                 <Link
                   href={project.live}
@@ -67,11 +80,11 @@ function Projects() {
                 </Link>
               )}
             </div>
-            <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">
+            <p className="text-xs font-mono text-[var(--text-secondary)] whitespace-nowrap">
               {project.date}
             </p>
           </div>
-          <p className="text-xs text-[var(--text-secondary)] mb-2">
+          <p className="text-xs font-mono text-[var(--text-secondary)] mb-2">
             {project.stack}
           </p>
           <p className="text-base text-[var(--text-primary)] leading-relaxed">

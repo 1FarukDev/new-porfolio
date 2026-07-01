@@ -1,35 +1,171 @@
 @import "tailwindcss";
 
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #666666;
+}
+
+@property --text-primary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #171717;
+}
+
+@property --text-secondary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #666666;
+}
+
+@property --border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #eaeaea;
+}
+
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafafa;
+}
+
+@property --tooltip-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #171717;
+}
+
+@property --tooltip-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafafa;
+}
+
+@property --tooltip-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #333333;
+}
+
+@property --contrib-0 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0f0f0;
+}
+
+@property --contrib-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c8f5d5;
+}
+
+@property --contrib-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #52c076;
+}
+
+@property --contrib-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #17a34a;
+}
+
+@property --contrib-4 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0d542b;
+}
+
+@property --contrib-future {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0f0f0;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #0d0d0d;
-  --text-primary: #000000;
-  --text-secondary: #71717a;
+  --foreground: #666666;
+  --text-primary: #171717;
+  --text-secondary: #666666;
+  --border: #eaeaea;
+  --muted: #fafafa;
+  --tooltip-bg: #171717;
+  --tooltip-text: #fafafa;
+  --tooltip-border: #333333;
+  --contrib-0: #f0f0f0;
+  --contrib-1: #c8f5d5;
+  --contrib-2: #52c076;
+  --contrib-3: #17a34a;
+  --contrib-4: #0d542b;
+  --contrib-future: #f0f0f0;
 }
 
 .dark {
-  --background: #0e0f14;
-  --foreground: #71717a;
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
+  --background: #0a0a0a;
+  --foreground: #a1a1a1;
+  --text-primary: #ededed;
+  --text-secondary: #a1a1a1;
+  --border: #333333;
+  --muted: #171717;
+  --tooltip-bg: #262626;
+  --tooltip-text: #ededed;
+  --tooltip-border: #404040;
+  --contrib-0: #1a1a1a;
+  --contrib-1: #0d3321;
+  --contrib-2: #0f5c35;
+  --contrib-3: #16a34a;
+  --contrib-4: #4ade80;
+  --contrib-future: #1a1a1a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-meta);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+html.theme-transitions {
+  transition:
+    --background 0.22s ease,
+    --foreground 0.22s ease,
+    --text-primary 0.22s ease,
+    --text-secondary 0.22s ease,
+    --border 0.22s ease,
+    --muted 0.22s ease,
+    --tooltip-bg 0.22s ease,
+    --tooltip-text 0.22s ease,
+    --tooltip-border 0.22s ease,
+    --contrib-0 0.22s ease,
+    --contrib-1 0.22s ease,
+    --contrib-2 0.22s ease,
+    --contrib-3 0.22s ease,
+    --contrib-4 0.22s ease,
+    --contrib-future 0.22s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transitions {
+    transition: none;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: 0.012em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,6 +177,20 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   line-height: 1.6;
+  letter-spacing: 0.012em;
+}
+
+.font-mono {
+  letter-spacing: 0.04em;
+}
+
+nav a {
+  letter-spacing: 0.03em;
+}
+
+.site-wordmark {
+  font-family: var(--font-geist-sans), sans-serif;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -64,3 +214,30 @@ button a:hover,
   text-decoration: none !important;
 }
 
+@keyframes theme-icon-in {
+  from {
+    opacity: 0;
+    transform: rotate(-70deg) scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.theme-toggle-btn {
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-primary);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.85);
+}
+
+.theme-toggle-icon {
+  display: inline-flex;
+  animation: theme-icon-in 0.18s ease-out;
+}

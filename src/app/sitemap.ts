@@ -21,10 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://farukajibade.com/demo',
+      url: 'https://farukajibade.com/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.7,
     },
+    // {
+    //   url: 'https://farukajibade.com/demo',
+    //   lastModified: new Date(),
+    //   changeFrequency: 'monthly',
+    //   priority: 0.5,
+    // },
   ]
 }

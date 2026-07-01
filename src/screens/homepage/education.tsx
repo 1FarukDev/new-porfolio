@@ -5,7 +5,7 @@ const education = [
     school: "Federal University of Agriculture, Abeokuta",
     degree: "B.Sc. Data Science",
     description:
-      "Focused on statistical modelling, machine learning, and data-driven problem solving. Built a strong foundation in Python, data analysis, and applied AI.",
+      "Coursework: software engineering, data engineering, algorithms & data structures, systems design & security, python & R programming, data-driven computing, big data computing.",
     date: "2027",
   },
   {
@@ -28,17 +28,24 @@ function Education() {
           {education.map((edu, index) => (
             <div
               key={index}
-              className="pb-6 border-b border-gray-200 dark:border-gray-800 last:border-b-0"
+              className="pb-6 border-b border-[var(--border)] last:border-b-0"
             >
               <div className="flex justify-between items-start gap-4 mb-2">
-                <p className="text-[var(--text-primary)] font-medium">{edu.school}</p>
-                <p className="text-xs text-[var(--text-secondary)] whitespace-nowrap">
+                <p className="text-[var(--text-primary)] font-medium">
+                  {edu.school}
+                </p>
+                <p className="text-xs font-mono text-[var(--text-secondary)] whitespace-nowrap">
                   {edu.date}
                 </p>
               </div>
-              <p className="text-sm text-[var(--text-secondary)]">
+              <p className="text-sm text-[var(--text-secondary)] mb-2">
                 {edu.degree}
               </p>
+              {edu.description && (
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {edu.description}
+                </p>
+              )}
             </div>
           ))}
         </div>

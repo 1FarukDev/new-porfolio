@@ -6,17 +6,33 @@ const experiences = [
     company: "Technique Learning Solutions",
     role: "Software & AI Engineer",
     description:
-      "Built AI-powered chatbot with live agent escalation for EdTech platform. Designed and shipped full redesign of company website. Implemented token-based referral system for user growth.",
-    date: "Sep 2025 – present",
+      "Developed a RAG-powered chatbot with live agent escalation for an EdTech platform, replacing third-party subscriptions and increasing direct customer communication by 40%. Redesigned and rebuilt the company website for performance, usability, and SEO. Built a token-based referral system that drove organic learner growth.",
+    date: "Oct 2025 – present",
     link: "https://learntechnique.com/",
   },
   {
-    company: "Insync",
+    company: "SwiftBuddy",
+    role: "Software Engineer",
+    description:
+      "Built money transfer, bill payments, and contact-based payment request flows end-to-end in React Native for a fintech startup. Implemented RBAC across admin and user accounts, applied TDD across core payment features (80%+ coverage), and optimized APIs for real-time transactions (~20% faster response times).",
+    date: "Oct 2024 – Dec 2025",
+    link: "",
+  },
+  {
+    company: "Insync Health",
     role: "Software Engineer Intern",
     description:
-      "Interned as a full-stack developer, building and shipping features across a React Native health app with a Node.js (Express) backend, working across the entire stack from REST API design to mobile UI",
+      "Improved UI consistency and navigation across a React Native therapy app, reducing navigation drop-offs by 25%. Designed and deployed REST APIs on Node.js/Express, implemented RBAC for admin and staff, and applied TDD practices reaching 80%+ test coverage with ~20% faster API response times.",
     date: "Jan 2025 – Dec 2025",
     link: "",
+  },
+  {
+    company: "Aumento Solutions",
+    role: "Frontend Engineer (Contract)",
+    description:
+      "Build client-facing web interfaces and digital products for startups and growing businesses. Ship responsive frontends with React and Next.js across custom software and proprietary platform work.",
+    date: "Aug 2024 – present",
+    link: "https://www.linkedin.com/company/aumento-tech",
   },
 ];
 
@@ -31,17 +47,24 @@ function Experience() {
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="pb-6 border-gray-200 dark:border-gray-800 "
+              className="pb-6 border-b border-[var(--border)] last:border-b-0"
             >
               <div className="flex md:flex-row flex-col gap-2 md:items-start mb-2">
-                <Link
-                  href={exp.link}
-                  target="_blank"
-                  className="text-[var(--text-primary)] border-b w-max font-medium hover:decoration-transparent!"
-                >
-                  {exp.company}
-                </Link>
-                <p className="text-xs text-[var(--text-secondary)] md:ml-auto">
+                {exp.link ? (
+                  <Link
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--text-primary)] border-b w-max font-medium hover:decoration-transparent!"
+                  >
+                    {exp.company}
+                  </Link>
+                ) : (
+                  <p className="text-[var(--text-primary)] font-medium w-max">
+                    {exp.company}
+                  </p>
+                )}
+                <p className="text-xs font-mono text-[var(--text-secondary)] md:ml-auto">
                   {exp.date}
                 </p>
               </div>

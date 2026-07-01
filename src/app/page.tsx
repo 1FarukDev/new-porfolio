@@ -1,5 +1,4 @@
 import Homepage from "@/screens/homepage/homepage";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,12 +7,6 @@ export const metadata: Metadata = {
     "Welcome to my portfolio. I build web applications and AI products. Explore my projects, experience, and contributions.",
 };
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-
 export default function Home() {
-  return (
-    <div className="font-sans ">
-      <Homepage />
-    </div>
-  );
+  return <Homepage />;
 }

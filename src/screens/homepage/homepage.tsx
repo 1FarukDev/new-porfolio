@@ -1,6 +1,5 @@
 import React from "react";
 import Experience from "./experience";
-import Education from "./education";
 import Skills from "./skills";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react"; // added Mail
 import GithubContributions from "./github";
@@ -23,7 +22,7 @@ const socials = [
   },
   {
     name: "Email",
-    url: "mailto:hi@farukajibade.com", 
+    url: "mailto:hi@farukajibade.com",
     icon: Mail,
   },
 ];
@@ -34,7 +33,17 @@ function Homepage() {
       <div className="flex md:flex-row flex-col gap-6 md:gap-12">
         <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">About</div>
         <div className="w-full md:w-[70%] text-base leading-relaxed text-[var(--text-secondary)]">
-          i build web applications and ai products. passionate about solving real problems and shipping fast. currently working on developer tools and scaling systems that just work.
+          <p>
+            software and ai engineer based in lagos, building web, mobile, and
+            intelligent products. i work across the stack — react, next.js, and
+            react native on the front end; node.js and python on the back end;
+            and rag pipelines with langchain for ai-powered features.
+          </p>
+          <p>
+            data science at funaab, with hands-on experience
+            across fintech, healthtech, and edtech. i care about shipping fast,
+            writing reliable code, and building things that solve real problems.
+          </p>
         </div>
       </div>
 
@@ -58,8 +67,7 @@ function Homepage() {
 
       <GithubContributions />
       <Experience />
-      <Education />
-      {/* <Skills /> */}
+      <Skills />
     </div>
   );
 }

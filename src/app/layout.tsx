@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
@@ -11,9 +11,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const metaFont = IBM_Plex_Mono({
+  variable: "--font-meta",
   subsets: ["latin"],
+  weight: ["400"],
 });
 export const metadata: Metadata = {
   title: "Faruk Ajibade | Software Engineer, AI/ML Engineer",
@@ -72,10 +73,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="dark"||(!t&&d))document.documentElement.classList.add("dark")}catch(e){}})();`,
+          }}
+        />
         <SchemaComponent />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.className} ${geistSans.variable} ${metaFont.variable} antialiased`}
       >
         <ThemeProvider>
           <div className="mx-auto w-full max-w-[59rem] px-4 py-20  lowercase">

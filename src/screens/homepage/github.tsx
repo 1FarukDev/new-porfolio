@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useTheme } from "@/app/providers";
 
 type Day = { date: string; count: number };
 
-const COLORS = {
-  light: ["#262626", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-  dark: ["#262626", "#0e4429", "#006d32", "#26a641", "#39d353"],
-};
+const CONTRIB_VARS = [
+  "var(--contrib-0)",
+  "var(--contrib-1)",
+  "var(--contrib-2)",
+  "var(--contrib-3)",
+  "var(--contrib-4)",
+] as const;
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -76,9 +78,6 @@ export default function GithubContributions() {
     x: number;
     y: number;
   } | null>(null);
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
   useEffect(() => {
     const { start, end } = getDateRange();
 
@@ -115,7 +114,6 @@ export default function GithubContributions() {
       });
   }, []);
 
-  const palette = isDark ? COLORS.dark : COLORS.light;
   const today = new Date().toISOString().split("T")[0];
 
   return (
@@ -135,7 +133,7 @@ export default function GithubContributions() {
                   {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
                     <div
                       key={i}
-                      className="h-3 flex items-center text-[15px] text-[var(--text-secondary)]"
+                      className="h-3 flex items-center text-xs font-mono text-[var(--text-secondary)]"
                     >
                       {d}
                     </div>
@@ -156,7 +154,7 @@ export default function GithubContributions() {
                       return (
                         <div
                           key={wi}
-                          className="w-3 text-[15px] text-[var(--text-secondary)] overflow-visible whitespace-nowrap"
+                          className="w-3 text-xs font-mono text-[var(--text-secondary)] overflow-visible whitespace-nowrap"
                         >
                           {show ? MONTHS[month] : ""}
                         </div>
@@ -183,8 +181,8 @@ export default function GithubContributions() {
                               className="w-3 h-3 rounded-sm"
                               style={{
                                 background: isFuture
-                                  ? "#262626"
-                                  : palette[getLevel(day.count)],
+                                  ? "var(--contrib-future)"
+                                  : CONTRIB_VARS[getLevel(day.count)],
                                 opacity: isFuture ? 0.4 : 1,
                               }}
                               onMouseEnter={(e) => {
@@ -211,7 +209,7 @@ export default function GithubContributions() {
 
               {tooltip && (
                 <div
-                  className="absolute z-10 pointer-events-none bg-[#262626] border border-border rounded-md px-2 py-1 text-xs text-popover-foreground shadow-sm whitespace-nowrap -translate-x-1/2 -translate-y-full"
+                  className="absolute z-10 pointer-events-none bg-[var(--tooltip-bg)] border border-[var(--tooltip-border)] rounded-md px-2 py-1 text-xs font-mono text-[var(--tooltip-text)] shadow-sm whitespace-nowrap -translate-x-1/2 -translate-y-full"
                   style={{ left: tooltip.x, top: tooltip.y }}
                 >
                   {tooltip.text}
@@ -220,12 +218,12 @@ export default function GithubContributions() {
             </div>
 
             <div className="flex items-center justify-between mb-2 mt-3">
-              <span className="text-sm text-[var(--text-secondary)]">
+              <span className="text-sm font-mono text-[var(--text-secondary)]">
                 {total.toLocaleString()} contributions in this period
               </span>
               <div className="flex items-center gap-1">
                 <span className="text-xs text-[var(--text-secondary)]">Less</span>
-                {palette.map((c, i) => (
+                {CONTRIB_VARS.map((c, i) => (
                   <div
                     key={i}
                     className="w-3 h-3 rounded-sm"
