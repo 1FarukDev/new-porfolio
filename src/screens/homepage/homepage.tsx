@@ -1,7 +1,7 @@
 import React from "react";
 import Experience from "./experience";
 import Skills from "./skills";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"; // added Mail
+import { Github, Linkedin, Twitter, Mail, FileText } from "lucide-react";
 import GithubContributions from "./github";
 
 const socials = [
@@ -24,6 +24,17 @@ const socials = [
     name: "Email",
     url: "mailto:hi@farukajibade.com",
     icon: Mail,
+  },
+];
+
+const resumes = [
+  {
+    name: "software",
+    url: "/resumes/Faruk_Ajibade_Software_Engineer.pdf",
+  },
+  {
+    name: "ai",
+    url: "/resumes/Faruk_Ajibade_AI_Engineer.pdf",
   },
 ];
 
@@ -60,6 +71,26 @@ function Homepage() {
             >
               <social.icon className="w-4 h-4" />
               <span>{social.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex md:flex-row flex-col gap-6 md:gap-12">
+        <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">
+          resume
+        </div>
+        <div className="flex gap-6 w-full md:w-[70%]">
+          {resumes.map((resume) => (
+            <a
+              key={resume.name}
+              href={resume.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              <span>{resume.name}</span>
             </a>
           ))}
         </div>
