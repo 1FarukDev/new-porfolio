@@ -25,7 +25,7 @@ const projects = [
     date: "2025",
     stack: "TypeScript, Next.js, Tailwind CSS, Supabase",
     description:
-      "Full-stack e-commerce platform for a Nigerian surface pattern design studio. Supabase powers auth, file storage for print assets, and real-time product data. Includes collection filtering, consultation booking, and SSR for global SEO.",
+      "Full-stack e-commerce platform for a Nigerian surface pattern design studio. Supabase powers auth, file storage for print assets, and real-time product data — with SSR for global SEO.",
     live: "https://www.jesudarahinmikaiye.com",
   },
   {

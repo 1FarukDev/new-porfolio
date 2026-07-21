@@ -21,15 +21,20 @@ function AboutIntro() {
         </p>
         <div className="w-full md:w-[70%] space-y-4 text-base leading-relaxed text-[var(--text-secondary)]">
           <p>
-            software and ai engineer based in lagos, building web, mobile, and
-            intelligent products. i work across the stack — react, next.js, and
-            react native on the front end; node.js and python on the back end;
-            and rag pipelines with langchain for ai-powered features.
+            i&apos;m currently building ai and web products for fintech,
+            healthtech, and edtech teams — most recently a rag chatbot with live
+            agent escalation that replaced a third-party subscription and lifted
+            direct customer contact 40%.
           </p>
           <p>
-            data science at funaab, with hands-on experience
-            across fintech, healthtech, and edtech. i care about shipping fast,
-            writing reliable code, and building things that solve real problems.
+            before that: payment flows in react native at a fintech startup
+            (tdd, 80%+ coverage, ~20% faster api responses), and a therapy app
+            at a healthtech startup where i cut navigation drop-offs 25%.
+          </p>
+          <p>
+            b.sc. data science at funaab (2027), computer science diploma from
+            lagos state polytechnic. i like small, sharp tools over sprawling
+            frameworks — vaultless is basically that instinct as a product.
           </p>
         </div>
       </div>

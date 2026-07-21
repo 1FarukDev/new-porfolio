@@ -6,7 +6,7 @@ const experiences = [
     company: "Technique Learning Solutions",
     role: "Software & AI Engineer",
     description:
-      "Developed a RAG-powered chatbot with live agent escalation for an EdTech platform, replacing third-party subscriptions and increasing direct customer communication by 40%. Redesigned and rebuilt the company website for performance, usability, and SEO. Built a token-based referral system that drove organic learner growth.",
+      "Redesigned and rebuilt the company website for performance, usability, and SEO, migrating data from the previous site with 98% transfer success. Developed a RAG-powered chatbot with live agent escalation for the EdTech platform, replacing third-party subscriptions and increasing direct customer communication by 40%. Built a token-based referral system that drove organic learner growth.",
     date: "Oct 2025 – present",
     link: "https://learntechnique.com/",
   },

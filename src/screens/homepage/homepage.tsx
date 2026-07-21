@@ -45,15 +45,13 @@ function Homepage() {
         <div className="w-full md:w-[30%] text-sm text-[var(--text-secondary)] font-medium">About</div>
         <div className="w-full md:w-[70%] text-base leading-relaxed text-[var(--text-secondary)]">
           <p>
-            software and ai engineer based in lagos, building web, mobile, and
-            intelligent products. i work across the stack — react, next.js, and
-            react native on the front end; node.js and python on the back end;
-            and rag pipelines with langchain for ai-powered features.
+            software and ai engineer based in lagos. react, next.js, and react
+            native on the front end; node.js and python on the back end; rag
+            pipelines with langchain for ai features.
           </p>
           <p>
-            data science at funaab, with hands-on experience
-            across fintech, healthtech, and edtech. i care about shipping fast,
-            writing reliable code, and building things that solve real problems.
+            currently at technique learning solutions, building and shipping
+            across fintech, healthtech, and edtech products.
           </p>
         </div>
       </div>
